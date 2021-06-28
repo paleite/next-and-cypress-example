@@ -12,6 +12,8 @@ const Post = props => (
 
 Post.getInitialProps = async function(context) {
   const { id } = context.query;
+  // Simulate a slow API
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
   const show = await res.json();
 
